@@ -39,7 +39,7 @@ docker build -t hugo-cesar1/quest-game-list:v2 .
 ### 2.3 Rodar aplicacao em container
 
 ```bash
-docker run --rm -p 8000:8000 hugo-cesar1/quest-game-list:v2
+docker run --rm -p 8000:8000 quest-game-list:local
 ```
 
 Alternativa com Compose:
