@@ -1,0 +1,375 @@
+:root {
+    --ink: #ecedf4;
+    --ink-soft: #b5b9c8;
+    --line: rgba(191, 201, 231, 0.25);
+    --gold: #e9bc5e;
+    --pink-a: #dc3a70;
+    --pink-b: #ff5b93;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    min-height: 100%;
+    font-family: "Manrope", sans-serif;
+    color: var(--ink);
+    background: #0b0f18;
+}
+
+body {
+    min-height: 100vh;
+    background-image:
+        linear-gradient(180deg, rgba(11, 13, 21, 0.2) 0%, rgba(10, 12, 19, 0.88) 85%),
+        url("https://images.unsplash.com/photo-1614294149010-950b698f72c0?auto=format&fit=crop&w=2100&q=80");
+    background-size: cover;
+    background-position: center center;
+}
+
+.page-wrap {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 14px 18px 18px;
+    background: linear-gradient(180deg, rgba(7, 9, 16, 0.04), rgba(7, 9, 16, 0.76));
+}
+
+.top-nav {
+    width: min(1120px, 100%);
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    font-size: 0.88rem;
+}
+
+.top-nav a {
+    color: var(--ink-soft);
+    text-decoration: none;
+}
+
+.top-nav a:hover {
+    color: #ffffff;
+}
+
+.profile-shell {
+    width: min(1120px, 100%);
+    margin: 12px auto auto;
+}
+
+.brand-row {
+    margin-bottom: 8px;
+}
+
+.brand {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    border: 2px solid var(--gold);
+    display: grid;
+    place-items: center;
+    color: var(--gold);
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+.brand-main {
+    font-size: clamp(2.1rem, 6vw, 3.4rem);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    font-weight: 800;
+}
+
+.brand-sub {
+    color: var(--gold);
+    margin-top: 12px;
+    font-size: clamp(1.05rem, 2vw, 1.72rem);
+    font-weight: 700;
+}
+
+.profile-head {
+    margin-top: 8px;
+}
+
+.avatar-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar {
+    width: 66px;
+    height: 66px;
+    border-radius: 8px;
+    border: 1px solid rgba(179, 191, 224, 0.35);
+    background: linear-gradient(180deg, #5f6481 0%, #878cac 100%);
+}
+
+.avatar-card h2 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.avatar-card a {
+    color: #d7dcef;
+    text-decoration: none;
+    font-size: 0.92rem;
+}
+
+.tabs {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 10px 0;
+}
+
+.tabs a {
+    color: #c3c9dc;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.tabs a.active {
+    color: #fff;
+    font-weight: 700;
+    border-bottom: 2px solid var(--pink-b);
+    padding-bottom: 4px;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.left-col h3,
+.main-col h3 {
+    margin: 0 0 8px;
+    font-size: 1.08rem;
+}
+
+.left-col p {
+    margin: 0 0 14px;
+    color: #d6daea;
+    font-size: 0.92rem;
+}
+
+.chart-wrap {
+    margin-bottom: 14px;
+}
+
+.bars {
+    height: 50px;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    align-items: end;
+    gap: 3px;
+}
+
+.bars span {
+    width: 12px;
+    border-radius: 3px 3px 0 0;
+    background: linear-gradient(180deg, var(--pink-b), var(--pink-a));
+}
+
+.scale {
+    margin-top: 6px;
+    display: flex;
+    justify-content: space-between;
+    color: #d3d8e9;
+    font-size: 0.8rem;
+}
+
+.medals {
+    display: flex;
+    gap: 8px;
+    margin: 4px 0 8px;
+}
+
+.medal {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #18131c;
+}
+
+.m1 { background: linear-gradient(145deg, #d989ff, #7a56ff); }
+.m2 { background: linear-gradient(145deg, #7ef0ff, #3f93ff); }
+.m3 { background: linear-gradient(145deg, #ffd98b, #ff9f4b); }
+
+.small-link {
+    color: #d6dced;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line);
+}
+
+.stats-row article {
+    text-align: center;
+}
+
+.stats-row strong {
+    display: block;
+    font-size: clamp(2.2rem, 5vw, 3.1rem);
+    line-height: 1;
+}
+
+.stats-row span {
+    color: #d1d7e8;
+    font-size: 0.95rem;
+}
+
+.review-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.review-head a {
+    color: #d7dcef;
+    text-decoration: none;
+    font-size: 0.92rem;
+}
+
+.review-card {
+    margin-top: 8px;
+    display: grid;
+    grid-template-columns: 120px minmax(0, 1fr);
+    gap: 12px;
+    padding: 10px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: rgba(15, 20, 35, 0.45);
+}
+
+.review-card img {
+    width: 120px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.review-card h4 {
+    margin: 2px 0 6px;
+    font-size: 1.6rem;
+}
+
+.meta {
+    margin: 0 0 6px;
+    color: #f1b6cd;
+    font-size: 0.9rem;
+}
+
+.text {
+    margin: 0 0 6px;
+    color: #d8dced;
+    font-size: 0.95rem;
+}
+
+.meta-links {
+    margin: 0;
+    color: #aab2c8;
+    font-size: 0.88rem;
+}
+
+.site-footer {
+    width: min(1120px, 100%);
+    margin: 18px auto 0;
+    padding-top: 14px;
+    border-top: 1px solid rgba(166, 176, 206, 0.2);
+    color: #a8aec1;
+    font-size: 0.82rem;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.footer-links a {
+    color: #b8bed0;
+    text-decoration: none;
+}
+
+.site-footer p {
+    margin: 6px 0 0;
+}
+
+@media (max-width: 860px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .left-col {
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 12px;
+    }
+
+    .review-card {
+        grid-template-columns: 1fr;
+    }
+
+    .review-card img {
+        width: 100%;
+        height: 220px;
+    }
+}
+
+@media (max-width: 720px) {
+    .page-wrap {
+        padding: 10px;
+    }
+
+    .top-nav {
+        justify-content: center;
+    }
+
+    .brand {
+        flex-wrap: wrap;
+        row-gap: 2px;
+    }
+
+    .brand-sub {
+        margin-top: 0;
+    }
+
+    .stats-row {
+        grid-template-columns: 1fr;
+    }
+
+    .site-footer {
+        text-align: center;
+    }
+
+    .footer-links {
+        justify-content: center;
+    }
+}

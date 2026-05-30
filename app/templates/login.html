@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quest game list - Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/login_screen.css">
+</head>
+<body>
+    <div class="page-wrap">
+        <header class="top-nav">
+            <a href="/register">Cadastrar-se</a>
+            <a href="/games">Jogos</a>
+            <a href="/procurar">Procurar</a>
+        </header>
+
+        <main class="login-shell">
+            <section class="login-card">
+                <h1 class="brand">
+                    <span class="brand-icon">&#10003;</span>
+                    <span class="brand-main">Quest</span>
+                    <span class="brand-sub">game list</span>
+                </h1>
+
+                <h2>bem vindo de volta</h2>
+
+                <form class="signin-form" action="#" method="post">
+                    <label for="email">E-mail / Nome de usuario</label>
+                    <input id="email" name="email" type="text" autocomplete="username">
+
+                    <label for="password">Senha</label>
+                    <input id="password" name="password" type="password" autocomplete="current-password">
+
+                    <label class="remember" for="remember">
+                        <input id="remember" name="remember" type="checkbox">
+                        <span>Lembre de mim</span>
+                    </label>
+
+                    <button type="submit">Conecte-se</button>
+                </form>
+
+                <div class="support-links">
+                    <a href="/register">Novo usuario? Cadastre-se aqui.</a>
+                    <a href="#">Esqueceu sua senha?</a>
+                    <a href="#">Nao recebeu instrucoes de confirmacao?</a>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="footer-links">
+                <a href="#">Sobre</a>
+                <a href="#">Contato</a>
+                <a href="#">Aplicadores</a>
+                <a href="#">Roteiro</a>
+                <a href="#">Termos</a>
+                <a href="#">Privacidade</a>
+            </div>
+            <p>Quest LLC - Distribuido por RGB</p>
+        </footer>
+    </div>
+</body>
+</html>
