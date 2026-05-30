@@ -98,7 +98,12 @@ docker push hugo-cesar1/quest-game-list:v2
 - Link Docker Hub: `https://hub.docker.com/r/hugo-cesar1/quest-game-list`
 - Nome da imagem: `hugo-cesar1/quest-game-list`
 - Versao/tag: `v2`
-- Prints: tela da imagem publicada, tags e horario da publicacao.
+- Nome da imagem publicada: `hugocesar1/quest-game-list`
+- Versão/tag utilizada: `latest`
+- Print da publicação
+<img width="1114" height="491" alt="Image" src="https://github.com/user-attachments/assets/8f1599bc-5a91-4290-807f-2193e4e16440" width="100px" />
+
+<img width="1600" height="321" alt="Image" src="https://github.com/user-attachments/assets/d0c168dc-d8b9-46bd-abfc-9de36a10350d" width="100px"/>
 
 ## Parte 5 - Kubernetes Simplificado
 
