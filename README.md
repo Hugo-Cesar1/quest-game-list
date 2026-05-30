@@ -33,7 +33,7 @@ Este documento consolida a entrega da Unidade 2 com evolucao do sistema, Docker,
 ### 2.2 Criar nova imagem Docker
 
 ```bash
-docker build -t hugo-cesar1/quest-game-list:v2 .
+docker build -t quest-game-list:local .
 ```
 
 ### 2.3 Rodar aplicacao em container
