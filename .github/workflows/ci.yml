@@ -1,0 +1,65 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r app/requirements.txt
+          pip install pyyaml
+
+      - name: Validate Python syntax
+        run: |
+          python -m py_compile app/main.py
+
+      - name: Validate Dockerfile presence
+        run: |
+          test -f Dockerfile
+
+      - name: Validate Kubernetes manifest
+        run: |
+          python - <<'PY'
+          import yaml
+
+          with open("deployment.yaml", "r", encoding="utf-8") as f:
+              docs = [d for d in yaml.safe_load_all(f) if d]
+
+          assert len(docs) >= 2, "deployment.yaml deve conter Deployment e Service"
+
+          kinds = {doc.get("kind") for doc in docs}
+          assert "Deployment" in kinds, "Deployment ausente"
+          assert "Service" in kinds, "Service ausente"
+          print("Manifesto Kubernetes valido")
+          PY
+
+      - name: Run application smoke test
+        run: |
+          uvicorn app.main:app --host 127.0.0.1 --port 8000 &
+          APP_PID=$!
+          for i in {1..20}; do
+            if curl -fsS http://127.0.0.1:8000/ > /dev/null; then
+              break
+            fi
+            sleep 1
+          done
+          curl -fsS http://127.0.0.1:8000/ > /dev/null
+          kill $APP_PID

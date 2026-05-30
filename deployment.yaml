@@ -1,44 +1,56 @@
-from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
-from typing import List, Optional
-
-app = FastAPI(title="GameBacklog API", version="2.0.0")
-
-# Simulando Banco de Dados na Memória
-GAMES_DB = [
-    {"id": 1, "title": "The Witcher 3", "genre": "RPG", "status": "Jogando"},
-    {"id": 2, "title": "Elden Ring", "genre": "RPG", "status": "Quero Jogar"},
-    {"id": 3, "title": "Hollow Knight", "genre": "Metroidvania", "status": "Jogado"}
-]
-
-class Game(BaseModel):
-    title: str
-    genre: str
-    status: str # Jogado, Jogando, Quero Jogar, Abandonado
-
-@app.get("/")
-def home():
-    return {"status": "Online", "projeto": "Projeto Integrador DevOps - Unidade 2"}
-
-# RF01 & RF03 - Catálogo e Filtros
-@app.get("/games", response_model=List[dict])
-def get_games(genre: Optional[str] = None):
-    if genre:
-        return [g for g in GAMES_DB if g["genre"].lower() == genre.lower()]
-    return GAMES_DB
-
-# RF02 - Atualizar Estado do Jogo
-@app.put("/games/{game_id}")
-def update_game_status(game_id: int, status: str):
-    for game in GAMES_DB:
-        if game["id"] == game_id:
-            game["status"] = status
-            return {"message": "Status atualizado com sucesso", "game": game}
-    raise HTTPException(status_code=404, detail="Jogo não encontrado")
-
-# RF15 - Autenticação Fictícia
-@app.post("/auth/login")
-def login(user: dict):
-    if user.get("username") == "admin" and user.get("password") == "secret":
-        return {"access_token": "token-valido-devops", "token_type": "bearer"}
-    raise HTTPException(status_code=401, detail="Usuário ou senha incorretos")
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: quest-game-list
+    labels:
+        app: quest-game-list
+spec:
+    replicas: 3
+    selector:
+        matchLabels:
+            app: quest-game-list
+    template:
+        metadata:
+            labels:
+                app: quest-game-list
+        spec:
+            containers:
+                - name: quest-game-list
+                    image: hugo-cesar1/quest-game-list:v1
+                    imagePullPolicy: IfNotPresent
+                    ports:
+                        - containerPort: 8000
+                    readinessProbe:
+                        httpGet:
+                            path: /
+                            port: 8000
+                        initialDelaySeconds: 5
+                        periodSeconds: 10
+                    livenessProbe:
+                        httpGet:
+                            path: /
+                            port: 8000
+                        initialDelaySeconds: 15
+                        periodSeconds: 20
+                    resources:
+                        requests:
+                            cpu: "100m"
+                            memory: "128Mi"
+                        limits:
+                            cpu: "500m"
+                            memory: "512Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: quest-game-list-service
+    labels:
+        app: quest-game-list
+spec:
+    type: ClusterIP
+    selector:
+        app: quest-game-list
+    ports:
+        - protocol: TCP
+            port: 80
+            targetPort: 8000
