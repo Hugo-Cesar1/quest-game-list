@@ -7,23 +7,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/auth_shared.css">
     <link rel="stylesheet" href="/static/css/login_screen.css">
 </head>
 <body>
     <div class="page-wrap">
-        <header class="top-nav">
-            <a href="/register">Cadastrar-se</a>
-            <a href="/games">Jogos</a>
-            <a href="/procurar">Procurar</a>
-        </header>
+        {% include "partials/auth_top_nav.html" %}
 
         <main class="login-shell">
             <section class="login-card">
-                <h1 class="brand">
-                    <span class="brand-icon">&#10003;</span>
-                    <span class="brand-main">Quest</span>
-                    <span class="brand-sub">game list</span>
-                </h1>
+                {% include "partials/auth_brand.html" %}
 
                 <h2>bem vindo de volta</h2>
 
@@ -45,22 +38,11 @@
                 <div class="support-links">
                     <a href="/register">Novo usuario? Cadastre-se aqui.</a>
                     <a href="#">Esqueceu sua senha?</a>
-                    <a href="#">Nao recebeu instrucoes de confirmacao?</a>
                 </div>
             </section>
         </main>
 
-        <footer class="site-footer">
-            <div class="footer-links">
-                <a href="#">Sobre</a>
-                <a href="#">Contato</a>
-                <a href="#">Aplicadores</a>
-                <a href="#">Roteiro</a>
-                <a href="#">Termos</a>
-                <a href="#">Privacidade</a>
-            </div>
-            <p>Quest LLC - Distribuido por RGB</p>
-        </footer>
+        {% include "partials/auth_footer.html" %}
     </div>
 </body>
 </html>

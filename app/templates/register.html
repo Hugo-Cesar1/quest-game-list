@@ -7,67 +7,51 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/auth_shared.css">
     <link rel="stylesheet" href="/static/css/register_screen.css">
 </head>
 <body>
     <div class="page-wrap">
-        <header class="top-nav">
-            <a href="/">Log In</a>
-            <a href="/games">Games</a>
-            <a href="#">Search</a>
-        </header>
+        {% set auth_nav_primary_href = "/" %}
+        {% set auth_nav_primary_label = "Entrar" %}
+        {% include "partials/auth_top_nav.html" %}
 
         <main class="register-shell">
             <section class="register-card">
-                <h1 class="brand">
-                    <span class="brand-icon">&#10003;</span>
-                    <span class="brand-main">Quest</span>
-                    <span class="brand-sub">game list</span>
-                </h1>
+                {% include "partials/auth_brand.html" %}
 
-                <h2>Registration</h2>
+                <h2>Cadastro</h2>
 
                 <form class="register-form" action="#" method="post">
-                    <label for="email">Email address</label>
-                    <input id="email" name="email" type="email" autocomplete="email" placeholder="Email address">
+                    <label for="email">Endereco de e-mail</label>
+                    <input id="email" name="email" type="email" autocomplete="email" placeholder="Endereco de e-mail">
 
-                    <label for="username">Username</label>
-                    <input id="username" name="username" type="text" autocomplete="username" placeholder="Username">
-                    <small>Maximum of 16 characters</small>
+                    <label for="username">Nome de usuario</label>
+                    <input id="username" name="username" type="text" autocomplete="username" placeholder="Nome de usuario">
+                    <small>Maximo de 16 caracteres</small>
 
-                    <label for="password">Password</label>
-                    <input id="password" name="password" type="password" autocomplete="new-password" placeholder="Password">
-                    <small>Minimum of 6 characters</small>
+                    <label for="password">Senha</label>
+                    <input id="password" name="password" type="password" autocomplete="new-password" placeholder="Senha">
+                    <small>Minimo de 6 caracteres</small>
 
-                    <label for="password_confirm">Password Confirmation</label>
-                    <input id="password_confirm" name="password_confirm" type="password" autocomplete="new-password" placeholder="Password Confirmation">
+                    <label for="password_confirm">Confirmacao de senha</label>
+                    <input id="password_confirm" name="password_confirm" type="password" autocomplete="new-password" placeholder="Confirmacao de senha">
 
                     <label class="terms" for="terms">
                         <input id="terms" name="terms" type="checkbox">
-                        <span>I accept the Terms of Service and Privacy Policy</span>
+                        <span>Aceito os Termos de Servico e a Politica de Privacidade</span>
                     </label>
 
-                    <button type="submit">Register</button>
+                    <button type="submit">Cadastrar</button>
                 </form>
 
                 <div class="support-links">
-                    <a href="/">Already have an account? Log in</a>
-                    <a href="#">Didn't receive confirmation instructions?</a>
+                    <a href="/">Ja tem conta? Entrar</a>
                 </div>
             </section>
         </main>
 
-        <footer class="site-footer">
-            <div class="footer-links">
-                <a href="#">About</a>
-                <a href="#">Contact</a>
-                <a href="#">Backers</a>
-                <a href="#">Roadmap</a>
-                <a href="#">Terms</a>
-                <a href="#">Privacy</a>
-            </div>
-            <p>&copy; Quest LLC - Veiculado por RGB</p>
-        </footer>
+        {% include "partials/auth_footer.html" %}
     </div>
 </body>
 </html>

@@ -1,56 +1,56 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: quest-game-list
-    labels:
-        app: quest-game-list
+  name: quest-game-list
+  labels:
+    app: quest-game-list
 spec:
-    replicas: 3
-    selector:
-        matchLabels:
-            app: quest-game-list
-    template:
-        metadata:
-            labels:
-                app: quest-game-list
-        spec:
-            containers:
-                - name: quest-game-list
-                    image: hugo-cesar1/quest-game-list:v1
-                    imagePullPolicy: IfNotPresent
-                    ports:
-                        - containerPort: 8000
-                    readinessProbe:
-                        httpGet:
-                            path: /
-                            port: 8000
-                        initialDelaySeconds: 5
-                        periodSeconds: 10
-                    livenessProbe:
-                        httpGet:
-                            path: /
-                            port: 8000
-                        initialDelaySeconds: 15
-                        periodSeconds: 20
-                    resources:
-                        requests:
-                            cpu: "100m"
-                            memory: "128Mi"
-                        limits:
-                            cpu: "500m"
-                            memory: "512Mi"
+  replicas: 3
+  selector:
+    matchLabels:
+      app: quest-game-list
+  template:
+    metadata:
+      labels:
+        app: quest-game-list
+    spec:
+      containers:
+        - name: quest-game-list
+          image: hugo-cesar1/quest-game-list:v1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8000
+            initialDelaySeconds: 15
+            periodSeconds: 20
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
 ---
 apiVersion: v1
 kind: Service
 metadata:
-    name: quest-game-list-service
-    labels:
-        app: quest-game-list
+  name: quest-game-list-service
+  labels:
+    app: quest-game-list
 spec:
-    type: ClusterIP
-    selector:
-        app: quest-game-list
-    ports:
-        - protocol: TCP
-            port: 80
-            targetPort: 8000
+  type: ClusterIP
+  selector:
+    app: quest-game-list
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000

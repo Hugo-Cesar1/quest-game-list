@@ -1,0 +1,10 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: quest-game-list:local
+    container_name: quest-game-list
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
