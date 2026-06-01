@@ -58,11 +58,15 @@ docker logs quest-game-list
 curl -I http://localhost:8000/
 ```
 
-Evidencias a anexar no relatorio:
+Evidencias
 - Print do `docker ps` com container em execucao.
-- Print do navegador em `http://localhost:8000/`.
-- Print do log com inicializacao do Uvicorn sem erro.
+<img width="884" height="85" alt="Image" src="https://github.com/user-attachments/assets/73176596-a1b1-4d7f-b93f-3cb59936584c" width = "100px"/>
 
+- Print do navegador em `http://localhost:8000/`.
+<img width="1600" height="859" alt="Image" src="https://github.com/user-attachments/assets/a4aa70bb-878e-4916-8d26-f0dadf20fdb5" width = "100px"/>
+
+- Print do log com inicializacao do Uvicorn sem erro.
+<img width="1006" height="133" alt="Image" src="https://github.com/user-attachments/assets/3e97cbb4-59ee-45e6-ba71-fd8645fa2099" width = "100px"/>
 ## Parte 3 - Versionamento de Imagens
 
 Padrao adotado:
